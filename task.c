@@ -104,17 +104,18 @@ void list_tasks() {
         printf("Aucune tâche.\n");
     } else {
         printf("Liste des tâches :\n");
-        printf("%-10s | %-10s | %-30s | %-10s\n", 
-               "Task UID", "Agent UID", "Action", "Completed");
-        printf("------------|------------|--------------------------------|------------\n");
-        
+        printf("%-10s | %-10s | %-40s | %-10s | %-40s\n",
+               "Task UID", "Agent UID", "Action", "Completed", "Result");
+        printf("------------|------------|------------------------------------------|------------|------------------------------------------\n");
+
         struct Task *current = tasks;
         while (current != NULL) {
-            printf("%-10s | %-10s | %-30s | %-10s\n", 
-                   current->task_uid, 
-                   current->agent_uid, 
-                   current->action, 
-                   current->completed ? "Oui" : "Non");
+            printf("%-10s | %-10s | %-40s | %-10s | %-40s\n",
+                   current->task_uid,
+                   current->agent_uid,
+                   current->action,
+                   current->completed ? "Oui" : "Non",
+                   current->result ? current->result : "N/A");
             
             current = current->next;
         }
